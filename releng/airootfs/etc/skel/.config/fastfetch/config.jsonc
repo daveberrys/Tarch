@@ -3,7 +3,7 @@
   "logo": {
     "source": "/usr/share/tarch/ascii",
     "color": {
-      "1": "#808080"
+      "1": "#808080",
     }
   },
 
@@ -12,27 +12,27 @@
     "break",
     {
       "type": "custom",
-      "format": "                    __  __ _____    _    ",
+      "format": "                _____              _     ",
       "outputColor": "#808080"
     },
     {
       "type": "custom",
-      "format": "                   |  \\/  | ____|  / \\   ",
+      "format": "               |_   _|_ _ _ __ ___| |__  ",
       "outputColor": "#808080"
     },
     {
       "type": "custom",
-      "format": "                   | |\\/| |  _|   / _ \\  ",
+      "format": "                 | |/ _` | '__/ __| '_ \\ ",
       "outputColor": "#808080"
     },
     {
       "type": "custom",
-      "format": "                   | |  | | |___ / ___ \\ ",
+      "format": "                 | | (_| | | | (__| | | |",
       "outputColor": "#808080"
     },
     {
       "type": "custom",
-      "format": "                   |_|  |_|_____/_/   \\_\\",
+      "format": "                 |_|\\__,_|_|  \\___|_| |_|",
       "outputColor": "#808080"
     },
     "break",

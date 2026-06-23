@@ -5,8 +5,8 @@ skipArchInstall=false
 [[ "$1" == "-s" ]] && skipWait=true
 [[ "$1" == "-sa" ]] && skipArchInstall=true
 
-red = "[31m"
-green = "[32m"
+red="[31m"
+green="[32m"
 
 if [[ "$skipArchInstall" == "false" ]] then
     if [[ "$skipWait" == "true" ]]; then

@@ -10,8 +10,14 @@ We believe being in control is a responsibility, and a hassle. But, with pre-con
 
 --- Available commands ---
 Try out the [90mconfiguration [97mfirst;  labwc
-Install [90mT[36march[97m;           tarchinstall
+Install [90mT[36march[97m;                    tarchinstall
 Check out your specs;             fastfetch
+
+[36mNix [97package manager is available;
+- install package;   nixpi
+- remove package;    nixpr
+- search package;    nixps
+- update package;    nixpu
 
 --- Final messages ---
 Have fun! If you have found any bugs, feel free to create a issue request in github!

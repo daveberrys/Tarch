@@ -1,0 +1,1 @@
+/mnt/PersonalFiles/Other Stuff/Random Code Stuff/Made Easy Arch/releng/airootfs/etc/skel/.zshrc
