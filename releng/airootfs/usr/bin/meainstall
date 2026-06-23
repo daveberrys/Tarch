@@ -41,6 +41,7 @@ cp -r /usr/share/madeeasyarch/ /mnt/usr/share/ && echo "Copied madeeasyarch to /
 echo && figlet "Installing pre-packages" || echo "== Installing pre-packages =="
 arch-chroot /mnt pacman -S --noconfirm $(< /usr/share/madeeasyarch/pre-packages/pacman.txt) && echo "Pre-packages pacman installed" || echo "Failed to install pre-packages pacman"
 arch-chroot /mnt nix profile install --impure $(< /usr/share/madeeasyarch/pre-packages/nix.txt) && echo "Pre-packages nix installed" || echo "Failed to install pre-packages nix"
+arch-chroot /mnt chsh -s /usr/bin/zsh && echo "Shell changed to zsh" || echo "Failed to change shell"
 
 # Finalize
 echo && figlet "Finalize" || echo "== Finalize =="
