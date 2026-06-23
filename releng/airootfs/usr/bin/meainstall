@@ -29,18 +29,21 @@ if [[ "$skipArchInstall" == "false" ]] then
     fi
 fi
 
-# Copy configuration files
+# Copying configuration files
+echo && figlet "Copying configuration files" || echo "== Copying configuration files =="
 cp -r /etc/skel/. /mnt/etc/skel/ && echo "Copied skel to /mnt/etc/skel/" || echo "Failed to copy skel"
 for userdir in /mnt/home/*/; do
     cp -r /etc/skel/. "$userdir" && echo "Copied skel to $userdir" || echo "Failed to copy skel"
 done
 cp -r /usr/share/madeeasyarch/ /mnt/usr/share/ && echo "Copied madeeasyarch to /mnt/usr/share/" || echo "Failed to copy madeeasyarch"
 
-# Install pre-packages
+# Installing pre-packages
+echo && figlet "Installing pre-packages" || echo "== Installing pre-packages =="
 arch-chroot /mnt pacman -S --noconfirm $(< /usr/share/madeeasyarch/pre-packages/pacman.txt) && echo "Pre-packages pacman installed" || echo "Failed to install pre-packages pacman"
 arch-chroot /mnt nix profile install --impure $(< /usr/share/madeeasyarch/pre-packages/nix.txt) && echo "Pre-packages nix installed" || echo "Failed to install pre-packages nix"
 
 # Finalize
+echo && figlet "Finalize" || echo "== Finalize =="
 echo "All is done! Rebooting in 5 seconds..."
 sleep 5
 reboot
