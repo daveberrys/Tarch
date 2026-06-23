@@ -23,3 +23,5 @@ fastfetch
 figlet
 zsh
 git
+networkmanager
+bluetoothctl
