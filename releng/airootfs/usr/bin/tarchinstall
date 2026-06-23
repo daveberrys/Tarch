@@ -5,6 +5,9 @@ skipArchInstall=false
 [[ "$1" == "-s" ]] && skipWait=true
 [[ "$1" == "-sa" ]] && skipArchInstall=true
 
+red = "[31m"
+green = "[32m"
+
 if [[ "$skipArchInstall" == "false" ]] then
     if [[ "$skipWait" == "true" ]]; then
         archinstall
@@ -31,20 +34,23 @@ fi
 
 # Copying configuration files
 echo && figlet "Copying configuration files" || echo "== Copying configuration files =="
-cp -r /etc/skel/. /mnt/etc/skel/ && echo "Copied skel to /mnt/etc/skel/" || echo "Failed to copy skel"
+cp -r /etc/skel/. /mnt/etc/skel/ && echo "${green}> Copied skel to /mnt/etc/skel/" || echo "${red}> Failed to copy skel"
 for userdir in /mnt/home/*/; do
-    cp -r /etc/skel/. "$userdir" && echo "Copied skel to $userdir" || echo "Failed to copy skel"
+    cp -r /etc/skel/. "$userdir" && echo "${green}> Copied skel to $userdir" || echo "${red}> Failed to copy skel"
 done
-cp -r /usr/share/tarch/ /mnt/usr/share/ && echo "Copied tarch to /mnt/usr/share/" || echo "Failed to copy tarch"
+cp -r /usr/share/tarch/ /mnt/usr/share/ && echo "${green}> Copied tarch to /mnt/usr/share/" || echo "${red}> Failed to copy tarch"
 
 # Installing pre-packages
 echo && figlet "Installing pre-packages" || echo "== Installing pre-packages =="
-arch-chroot /mnt pacman -S --noconfirm $(< /usr/share/tarch/pre-packages/pacman.txt) && echo "Pre-packages pacman installed" || echo "Failed to install pre-packages pacman"
-arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/nix.txt) && echo "Pre-packages nix installed" || echo "Failed to install pre-packages nix"
-arch-chroot /mnt chsh -s /usr/bin/zsh && echo "Shell changed to zsh" || echo "Failed to change shell"
+arch-chroot /mnt pacman -S --noconfirm $(< /usr/share/tarch/pre-packages/pacman.txt) && echo "${green}> Pre-packages pacman installed" || echo "${red}> Failed to install pre-packages pacman"
+arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/nix.txt) && echo "${green}> Pre-packages nix installed" || echo "${red}> Failed to install pre-packages nix"
+arch-chroot /mnt chsh -s /usr/bin/zsh && echo "${green}> Shell changed to zsh" || echo "${red}> Failed to change shell"
+arch-chroot /mnt systemctl enable NetworkManager && echo "${green}> NetworkManager enabled" || echo "${red}> Failed to enable NetworkManager"
+arch-chroot /mnt systemctl enable bluetooth && echo "${green}> bluetooth enabled" || echo "${red}> Failed to enable bluetooth"
+arch-chroot /mnt systemctl enable nix-daemon.service && echo "${green}> nix-daemon.service enabled" || echo "${red}> Failed to enable nix-daemon.service"
 
 # Finalize
 echo && figlet "Finalize" || echo "== Finalize =="
-echo "All is done! Rebooting in 5 seconds..."
+echo "${green}> All is done! Rebooting in 5 seconds..."
 sleep 5
 reboot

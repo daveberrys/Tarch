@@ -24,4 +24,4 @@ figlet
 zsh
 git
 networkmanager
-bluetoothctl
+bluez-utils

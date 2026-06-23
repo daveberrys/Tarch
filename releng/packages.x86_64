@@ -152,4 +152,4 @@ fastfetch
 figlet
 git
 networkmanager
-bluetoothctl
+bluez-utils
