@@ -7,6 +7,7 @@ skipArchInstall=false
 
 red="[31m"
 green="[32m"
+white="[37m"
 
 if [[ "$skipArchInstall" == "false" ]] then
     if [[ "$skipWait" == "true" ]]; then
@@ -38,7 +39,7 @@ cp -r /etc/skel/. /mnt/etc/skel/ && echo "${green}> Copied skel to /mnt/etc/skel
 for userdir in /mnt/home/*/; do
     cp -r /etc/skel/. "$userdir" && echo "${green}> Copied skel to $userdir" || echo "${red}> Failed to copy skel"
 done
-cp -r /usr/share/tarch/ /mnt/usr/share/ && echo "${green}> Copied tarch to /mnt/usr/share/" || echo "${red}> Failed to copy tarch"
+cp -r /usr/share/tarch/ /mnt/usr/share/ && echo "${green}> Copied tarch to /mnt/usr/share/" || echo "${red}> Failed to copy tarch${white}"
 
 # Installing pre-packages
 echo && figlet "Installing pre-packages" || echo "== Installing pre-packages =="
@@ -47,7 +48,7 @@ arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/
 arch-chroot /mnt chsh -s /usr/bin/zsh && echo "${green}> Shell changed to zsh" || echo "${red}> Failed to change shell"
 arch-chroot /mnt systemctl enable NetworkManager && echo "${green}> NetworkManager enabled" || echo "${red}> Failed to enable NetworkManager"
 arch-chroot /mnt systemctl enable bluetooth && echo "${green}> bluetooth enabled" || echo "${red}> Failed to enable bluetooth"
-arch-chroot /mnt systemctl enable nix-daemon.service && echo "${green}> nix-daemon.service enabled" || echo "${red}> Failed to enable nix-daemon.service"
+arch-chroot /mnt systemctl enable nix-daemon.service && echo "${green}> nix-daemon.service enabled" || echo "${red}> Failed to enable nix-daemon.service${white}"
 
 # Finalize
 echo && figlet "Finalize" || echo "== Finalize =="
