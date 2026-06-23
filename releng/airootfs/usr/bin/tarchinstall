@@ -7,7 +7,7 @@ skipArchInstall=false
 
 red="[31m"
 green="[32m"
-white="[37m"
+reset="[0m"
 
 if [[ "$skipArchInstall" == "false" ]] then
     if [[ "$skipWait" == "true" ]]; then
@@ -15,7 +15,7 @@ if [[ "$skipArchInstall" == "false" ]] then
     else
         echo "|>|> [90mT[36march[97m- [34mThe Installer [97m<|<|"
         echo
-        echo "Hey! Looks like you're ready to install Tarch!"
+        echo "Hey! Looks like you're ready to install [90mT[36march!"
         echo "Here's what you need to do:"
         echo "  - When done installing, don't reboot from archinstall. Just exit the install, and tarchinstall will do postinstall setup."
         echo "  - Tarch is in early beta! But the dotfiles should be just fine to use daily."
@@ -33,25 +33,42 @@ if [[ "$skipArchInstall" == "false" ]] then
     fi
 fi
 
+tarchecho () {
+    if [[ $1 == "success" ]]; then
+        echo "${green}> $2 ${reset}"
+    elif [[ $1 == "failure" ]]; then
+        echo "${red}> $2 ${reset}"
+    else
+        echo "${reset}> $2 ${reset}"
+    fi
+}
+
 # Copying configuration files
 echo && figlet "Copying configuration files" || echo "== Copying configuration files =="
-cp -r /etc/skel/. /mnt/etc/skel/ && echo "${green}> Copied skel to /mnt/etc/skel/" || echo "${red}> Failed to copy skel"
+cp -r /etc/skel/. /mnt/etc/skel/ && tarchecho success "Copied skel to /mnt/etc/skel/" || tarchecho failure "Failed to copy skel"
 for userdir in /mnt/home/*/; do
-    cp -r /etc/skel/. "$userdir" && echo "${green}> Copied skel to $userdir" || echo "${red}> Failed to copy skel"
+    cp -r /etc/skel/. "$userdir" && tarchecho success "Copied skel to $userdir" || tarchecho failure "Failed to copy skel"
 done
-cp -r /usr/share/tarch/ /mnt/usr/share/ && echo "${green}> Copied tarch to /mnt/usr/share/" || echo "${red}> Failed to copy tarch${white}"
+cp -r /usr/share/tarch/ /mnt/usr/share/ && tarchecho success "Copied tarch to /mnt/usr/share/" || tarchecho failure "Failed to copy tarch"
 
 # Installing pre-packages
 echo && figlet "Installing pre-packages" || echo "== Installing pre-packages =="
-arch-chroot /mnt pacman -S --noconfirm $(< /usr/share/tarch/pre-packages/pacman.txt) && echo "${green}> Pre-packages pacman installed" || echo "${red}> Failed to install pre-packages pacman"
-arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/nix.txt) && echo "${green}> Pre-packages nix installed" || echo "${red}> Failed to install pre-packages nix"
-arch-chroot /mnt chsh -s /usr/bin/zsh && echo "${green}> Shell changed to zsh" || echo "${red}> Failed to change shell"
-arch-chroot /mnt systemctl enable NetworkManager && echo "${green}> NetworkManager enabled" || echo "${red}> Failed to enable NetworkManager"
-arch-chroot /mnt systemctl enable bluetooth && echo "${green}> bluetooth enabled" || echo "${red}> Failed to enable bluetooth"
-arch-chroot /mnt systemctl enable nix-daemon.service && echo "${green}> nix-daemon.service enabled" || echo "${red}> Failed to enable nix-daemon.service${white}"
+arch-chroot /mnt pacman -S --noconfirm $(< /usr/share/tarch/pre-packages/pacman.txt) && tarchecho success "Pre-packages pacman installed" || tarchecho failure "Failed to install pre-packages pacman"
+arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/nix.txt) && tarchecho success "Pre-packages nix installed" || tarchecho failure "Failed to install pre-packages nix"
+arch-chroot /mnt chsh -s /usr/bin/zsh && tarchecho success "Shell changed to zsh" || tarchecho failure "Failed to change shell"
+arch-chroot /mnt systemctl enable NetworkManager && tarchecho success "NetworkManager enabled" || tarchecho failure "Failed to enable NetworkManager"
+arch-chroot /mnt systemctl enable bluetooth && tarchecho success "bluetooth enabled" || tarchecho failure "Failed to enable bluetooth"
+arch-chroot /mnt systemctl enable nix-daemon.service && tarchecho success "nix-daemon.service enabled" || tarchecho failure "Failed to enable nix-daemon.service"
+for userdir in /mnt/home/*/; do
+    echo 'export NIXPKGS_ALLOW_UNFREE=1
+    alias nixpi="nix profile install --impure"
+    alias nixpr="nix profile remove"
+    alias nixps="nix search"
+    alias nixpu="nix profile upgrade"' >> "$userdir/.zshrc" && tarchecho success "Zsh config updated" || tarchecho failure "Failed to update Zsh config"
+done
 
 # Finalize
 echo && figlet "Finalize" || echo "== Finalize =="
-echo "${green}> All is done! Rebooting in 5 seconds..."
+tarchecho success "All is done! Rebooting in 5 seconds..."
 sleep 5
 reboot
