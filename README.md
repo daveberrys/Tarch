@@ -61,15 +61,34 @@ We don't have a github actions or release yet. But we do plan one! If you decide
 
 Congrats! You have successfully compiled Tarch from scratch. *wait... this isn't linux from scratch...*
 
-# Support the Project
-I got nothing. Just starring the repository or [joining my Discord server](https://discord.gg/S5jTpsq8Js) and giving me tips and feedback could help with the development.
+## What to do after building the ISO?
+You boot into it! In the live environment, you have 3 commands;
+- `labwc` - tests my configuration first!
+- `tarchinstall` - installs Tarch to your system
+- `fastfetch` - shows system information
 
-# Keybinds & Other Stuff
+## What to do after installing Tarch in my system?
+Assuming you only did the following;
+- Disk Configuration
+- Authentication
+- Network configuration
+- Exiting from Archinstall instead of rebooting
+> (which is the **reccomended** path since this already has a config file and also a desktop environment installed)
+
+Here's what you need to do **after installing** Tarch;
+- To get into the desktop environment, run `labwc`
+> [!NOTE]
+> Q: Why do we have to run a command instead of just booting into the desktop environment?
+>
+> A: For starters, I'm stupid and I don't know how to make it where when you're signed in, you get automatically get booted into labwc. I'll find a way, maybe later or sooner. If you wish to help, feel free to make a issue on what package I should use or submitting a PR.
+
+# Keybinds & Other Stuff.
 **Here are all the keybinds**;
 ```
 == General ==
 Closing Apps = Super + W
-Maximize = Middle Click Top Bar, Super + Middle Click, Maximize Button.
+Maximize = Super + Shift + F
+Fullscreen = Super + F
 Switch desktop 1 to desktop 5 = Super + {1,2,3,4,5}
 Switch windows = Alt + Tab, Alt + Shift + Tab
 Reload LabWC = Super + Ctrl + R
@@ -93,6 +112,9 @@ Open System Controls = Super + S
 - You still can use `pacman`! Only the repositores `core` and `extra` is included.
 
 ---
+
+# Support the Project
+I got nothing. Just starring the repository or [joining my Discord server](https://discord.gg/S5jTpsq8Js) and giving me tips and feedback could help with the development.
 
 # Built with
 - [Zed Editor](https://zed.dev/)

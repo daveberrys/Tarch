@@ -15,7 +15,7 @@ if [[ "$skipArchInstall" == "false" ]] then
     else
         echo "|>|> [90mT[36march[97m- [34mThe Installer [97m<|<|"
         echo
-        echo "Hey! Looks like you're ready to install [90mT[36march!"
+        echo "Hey! Looks like you're ready to install [90mT[36march[97m!"
         echo "Here's what you need to do:"
         echo "  - When done installing, don't reboot from archinstall. Just exit the install, and tarchinstall will do postinstall setup."
         echo "  - Tarch is in early beta! But the dotfiles should be just fine to use daily."
