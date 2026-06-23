@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="made-easy-arch"
-iso_label="MADEEASY_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
+iso_name="tarch"
+iso_label="TARCH_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="Daveberry Cricket Blueson <daveberryblueson@gmail.com>"
-iso_application="Made Easy Arch Linux Live/Rescue DVD"
+iso_application="Tarch Linux Live/Rescue DVD"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
 install_dir="arch"
 buildmodes=('iso')
@@ -22,7 +22,7 @@ file_permissions=(
   ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
-  ["/usr/bin/meainstall"]="0:0:755"
+  ["/usr/bin/tarchinstall"]="0:0:755"
 )
 
 nix profile install --impure nixpkgs#obs-cmd

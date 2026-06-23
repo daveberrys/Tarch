@@ -37,7 +37,7 @@
     "interval": 60
   },
   "custom/music": {
-    "exec": "/usr/share/madeeasyarch/waybar/music.sh",
+    "exec": "/usr/share/tarch/waybar/music.sh",
     "format": "{}",
     "on-click": "playerctl play-pause",
     "on-click-middle": "playerctl previous",
@@ -46,7 +46,7 @@
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -10%"
   },
   "custom/cava": {
-    "exec": "/usr/share/madeeasyarch/waybar/cava.sh",
+    "exec": "/usr/share/tarch/waybar/cava.sh",
     "format": "{}"
   },
 

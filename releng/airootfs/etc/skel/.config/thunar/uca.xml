@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
-	<icon>/usr/share/madeeasyarch/pictures/zed.png</icon>
+	<icon>/usr/share/tarch/pictures/zed.png</icon>
 	<name>Open Zed Editor Here</name>
 	<submenu></submenu>
 	<unique-id>1766910639795702-1</unique-id>

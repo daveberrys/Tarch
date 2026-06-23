@@ -100,7 +100,7 @@
 
     <keybind key="W-s">
       <action name="Execute">
-        <command>kitty --class="floating_menu" --title="System Controls" -o initial_window_width=500 -o initial_window_height=300 -e python3 /usr/share/madeeasyarch/scripts/syscontrol.py</command>
+        <command>kitty --class="floating_menu" --title="System Controls" -o initial_window_width=500 -o initial_window_height=300 -e python3 /usr/share/tarch/scripts/syscontrol.py</command>
       </action>
     </keybind>
 
@@ -121,13 +121,13 @@
     <!-- OBS STUFF -->
     <keybind key="A-Insert">
       <action name="Execute">
-        <command>bash /usr/share/madeeasyarch/scripts/obs/replay.sh</command>
+        <command>bash /usr/share/tarch/scripts/obs/replay.sh</command>
       </action>
     </keybind>
 
     <keybind key="A-S-Insert">
       <action name="Execute">
-	      <command>bash /usr/share/madeeasyarch/scripts/obs/recording.sh</command>
+	      <command>bash /usr/share/tarch/scripts/obs/recording.sh</command>
       </action>
     </keybind>
   </keyboard>

@@ -1,22 +1,21 @@
-[90m __  __           _        _____                 [36m    _             _
-[90m|  \/  | __ _  __| | ___  | ____|__ _ ___ _   _  [36m   / \   _ __ ___| |__
-[90m| |\/| |/ _` |/ _` |/ _ \ |  _| / _` / __| | | | [36m  / _ \ | '__/ __| '_ \
-[90m| |  | | (_| | (_| |  __/ | |__| (_| \__ \ |_| | [36m / ___ \| | | (__| | | |
-[90m|_|  |_|\__,_|\__,_|\___| |_____\__,_|___/\__, | [36m/_/   \_\_|  \___|_| |_|
-                                          [90m|___/
+[90m _____  [36m_    ____   ____ _   _ 
+[90m|_   _|[36m/ \  |  _ \ / ___| | | |
+[90m  | | [36m/ _ \ | |_) | |   | |_| |
+[90m  | |[36m/ ___ \|  _ <| |___|  _  |
+[90m  |_[36m/_/   \_\_| \_\\____|_| |_|
 
-[97m--- Welcome to [90mMade Easy [36mArch[97m! ---
+[97m--- Welcome to [90mT[36march[97m! ---
 A distro based on Arch Linux, pre-configured for LabWC, lightweight, and completely out of your way.
 We believe being in control is a responsibility, and a hassle. But, with pre-configured defaults, your experience will go smoother.
 
 --- Available commands ---
 Try out the [90mconfiguration [97mfirst;  labwc
-Install [90mMade Easy [36mArch[97m;           meainstall
+Install [90mT[36march[97m;           tarchinstall
 Check out your specs;             fastfetch
 
 --- Final messages ---
 Have fun! If you have found any bugs, feel free to create a issue request in github!
-- [36mhttps://github.com/daveberrys/MadeEasyArch
+- [36mhttps://github.com/daveberrys/Tarch
 
 [97mdotfiles are available at [36mhttps://github.com/Daveberry-Stuff/daves-labwc-config [90m(may be out of date. oops!)
 [97mand also at `~/.config` or `/root/` if you're in a liveboot.

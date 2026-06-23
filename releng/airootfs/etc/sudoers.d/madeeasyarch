@@ -1,2 +1,2 @@
-%wheel ALL=(root) NOPASSWD: /usr/share/madeeasyarch/scripts/ddc-helper.sh
+%wheel ALL=(root) NOPASSWD: /usr/share/tarch/scripts/ddc-helper.sh
 %wheel ALL=(root) NOPASSWD: /usr/bin/ddcutil

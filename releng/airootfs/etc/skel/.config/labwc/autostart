@@ -4,7 +4,7 @@ export GTK_APPLICATION_PREFER_DARK_THEME=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=adwaita-dark
 
-swaybg -i "/usr/share/madeeasyarch/backgrounds/Daniel Leone - Unsplash.jpg" -m fill &
+swaybg -i "/usr/share/tarch/backgrounds/Daniel Leone - Unsplash.jpg" -m fill &
 obs --minimize-to-tray --startreplaybuffer &
 waybar &
 mako &

@@ -1,4 +1,4 @@
-figlet "MEA Rebuild" || echo "|>|> MEA Rebuild <|<|"
+figlet "TARCH Rebuild" || echo "|>|> TARCH Rebuild <|<|"
 echo "This will clean out the work and out directories and rebuild the ISO"
 echo
 
