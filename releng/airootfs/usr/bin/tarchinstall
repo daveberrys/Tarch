@@ -54,11 +54,16 @@ cp -r /usr/share/tarch/ /mnt/usr/share/ && tarchecho success "Copied tarch to /m
 # Installing pre-packages
 echo && figlet "Installing pre-packages" || echo "== Installing pre-packages =="
 arch-chroot /mnt pacman -S --noconfirm $(< /usr/share/tarch/pre-packages/pacman.txt) && tarchecho success "Pre-packages pacman installed" || tarchecho failure "Failed to install pre-packages pacman"
-arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/nix.txt) && tarchecho success "Pre-packages nix installed" || tarchecho failure "Failed to install pre-packages nix"
-arch-chroot /mnt chsh -s /usr/bin/zsh && tarchecho success "Shell changed to zsh" || tarchecho failure "Failed to change shell"
+
 arch-chroot /mnt systemctl enable NetworkManager && tarchecho success "NetworkManager enabled" || tarchecho failure "Failed to enable NetworkManager"
 arch-chroot /mnt systemctl enable bluetooth && tarchecho success "bluetooth enabled" || tarchecho failure "Failed to enable bluetooth"
 arch-chroot /mnt systemctl enable nix-daemon.service && tarchecho success "nix-daemon.service enabled" || tarchecho failure "Failed to enable nix-daemon.service"
+
+arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/nix.txt) && tarchecho success "Pre-packages nix installed" || tarchecho failure "Failed to install pre-packages nix"
+mkdir -p /mnt/etc/nix && tarchecho success "Nix config directory created" || tarchecho failure "Failed to create Nix config directory"
+echo "experimental-features = nix-command flakes" >> /mnt/etc/nix/nix.conf && tarchecho success "Nix config updated" || tarchecho failure "Failed to update Nix config"
+
+arch-chroot /mnt chsh -s /usr/bin/zsh && tarchecho success "Shell changed to zsh" || tarchecho failure "Failed to change shell"
 for userdir in /mnt/home/*/; do
     echo 'export NIXPKGS_ALLOW_UNFREE=1
     alias nixpi="nix profile install --impure"

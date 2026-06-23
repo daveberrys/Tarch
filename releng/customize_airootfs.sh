@@ -5,10 +5,10 @@ systemctl enable nix-daemon.service
 systemctl enable NetworkManager
 systemctl enable bluetooth
 
-cat > /etc/nix/nix.conf <<EOF
-experimental-features = nix-command flakes
-EOF
+mkdir -p /etc/nix
+echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf
 
+mkdir -p /root/
 echo 'export NIXPKGS_ALLOW_UNFREE=1
 alias nixpi="nix profile install --impure"
 alias nixpr="nix profile remove"
