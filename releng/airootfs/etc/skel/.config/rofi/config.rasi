@@ -1,0 +1,80 @@
+configuration {
+    show-icons: true;
+    display-drun: "Run: ";
+    // modi: "drun";
+    
+    /* Dimensions */
+    width: 600px;
+    height: 800px;
+    
+    /* Make the entire window rounded */
+    border-radius: 15px;
+}
+
+* {
+    /* Color Palette */
+    background: #121212; /* Near black for window/list background */
+    background-alt: #333333; /* Darker gray for input bar */
+    foreground: #cccccc; /* Unselected text color */
+    
+    /* === THE ACCENT COLOR CHANGE === */
+    selected: #557088; /* Subtle Slate Blue for selection background */
+    
+    selected-foreground: #ffffff; /* White text on selected items */
+    alternate-normal-background: rgba(255, 255, 255, 0%); /* Hide the alternate background */
+}
+
+window {
+    background-color: @background;
+    border-radius: 15px;
+    // box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Keep the subtle shadow */
+}
+
+inputbar {
+    background-color: @background-alt;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 15px;
+    children: [ prompt, entry ];
+}
+
+entry {
+    color: @foreground;
+    font: "sans-serif 12";
+}
+
+mainbox {
+    padding: 0;
+}
+
+listview {
+    padding: 0px 15px 15px 15px;
+    cycle: true;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px;
+    border-radius: 8px;
+    color: @foreground;
+}
+
+element-text {
+    background-color: inherit;
+    color: inherit;
+}
+
+/* Selected Element Styling (The Fix) */
+element selected {
+    background-color: @selected;
+    color: @selected-foreground;
+    
+    /* Ensure the foreground color for the text is white */
+    text-color: #ffffff;
+}
+
+element selected element-text {
+    /* Final override to ensure text is white */
+    text-color: #ffffff;
+    font-weight: bold; /* Optional: make selected text slightly bolder */
+}

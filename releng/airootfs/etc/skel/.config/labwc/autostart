@@ -1,0 +1,20 @@
+export GTK_THEME=Adwaita:dark
+export GTK_APPLICATION_PREFER_DARK_THEME=1
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=adwaita-dark
+
+swaybg -i "/usr/share/madeeasyarch/backgrounds/Daniel Leone - Unsplash.jpg" -m fill &
+obs --minimize-to-tray --startreplaybuffer &
+waybar &
+mako &
+
+# prefer streaming
+sunshine &
+netbird up &
+# or if tailscale, do tailscale up
+
+/usr/lib/xdg-desktop-portal -r &
+/usr/lib/xdg-desktop-portal-gtk -r &
+
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' &

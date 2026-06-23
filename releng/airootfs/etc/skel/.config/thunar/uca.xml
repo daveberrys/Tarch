@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>/usr/share/madeeasyarch/pictures/zed.png</icon>
+	<name>Open Zed Editor Here</name>
+	<submenu></submenu>
+	<unique-id>1766910639795702-1</unique-id>
+	<command>zed %f</command>
+	<description>Opens the Zed Editor in this folder.</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>kitty</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1766557711954292-1</unique-id>
+	<command>kitty %f</command>
+	<description>Opens the terminal in this folder.</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+</actions>

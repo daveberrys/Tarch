@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<labwc_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <core>
+    <decoration>server</decoration>
+    <gap>0</gap>
+  </core>
+
+  <placement>
+    <policy>Smart</policy>
+    <center>yes</center>
+  </placement>
+
+  <theme>
+    <name>Dark</name>
+    <cornerRadius>0</cornerRadius>
+  </theme>
+
+  <desktops>
+    <number>5</number>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+    </names>
+  </desktops>
+
+  <keyboard>
+    <repeatRate>40</repeatRate>
+    <repeatDelay>250</repeatDelay>
+    <default /> <keybind key="W-w">
+      <action name="Close" />
+    </keybind>
+
+    <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
+    <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind>
+    <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind>
+    <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind>
+    <keybind key="W-5"><action name="GoToDesktop" to="5" /></keybind>
+
+    <keybind key="W-S-1"><action name="SendToDesktop" to="1" /></keybind>
+    <keybind key="W-S-2"><action name="SendToDesktop" to="2" /></keybind>
+    <keybind key="W-S-3"><action name="SendToDesktop" to="3" /></keybind>
+    <keybind key="W-S-4"><action name="SendToDesktop" to="4" /></keybind>
+    <keybind key="W-S-5"><action name="SendToDesktop" to="5" /></keybind>
+
+    <keybind key="A-Tab">
+      <action name="NextWindow">
+        <finalactions>
+          <action name="Focus" />
+          <action name="Raise" />
+        </finalactions>
+      </action>
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="Pre`iousWindow">
+        <finalactions>
+          <action name="Focus" />
+          <action name="Raise" />
+        </finalactions>
+      </action>
+    </keybind>
+
+    <keybind key="W-S-e">
+      <action name="Execute">
+        <command>kitty --class="floating_menu" --title="Ranger" -o initial_window_width=720 -o initial_window_height=1280 -e ranger</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>thunar</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-Return">
+      <action name="Execute">
+        <command>kitty</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-S-s">
+      <action name="Execute">
+	      <command>sh -c 'grim - | /usr/bin/satty --filename - --fullscreen --initial-tool crop --early-exit --copy-command wl-copy --output-filename ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png'</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-C-S-s">
+      <action name="Execute">
+        <command>~/.config/rofi/powermenu.sh</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-d">
+      <action name="Execute">
+        <command>rofi -show drun</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-s">
+      <action name="Execute">
+        <command>kitty --class="floating_menu" --title="System Controls" -o initial_window_width=500 -o initial_window_height=300 -e python3 /usr/share/madeeasyarch/scripts/syscontrol.py</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-C-r">
+      <action name="Execute">
+        <command>labwc --reconfigure</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-S-f">
+      <action name="ToggleMaximize" />
+    </keybind>
+
+    <keybind key="W-f">
+      <action name="ToggleFullscreen" />
+    </keybind>
+
+    <!-- OBS STUFF -->
+    <keybind key="A-Insert">
+      <action name="Execute">
+        <command>bash /usr/share/madeeasyarch/scripts/obs/replay.sh</command>
+      </action>
+    </keybind>
+
+    <keybind key="A-S-Insert">
+      <action name="Execute">
+	      <command>bash /usr/share/madeeasyarch/scripts/obs/recording.sh</command>
+      </action>
+    </keybind>
+  </keyboard>
+
+  <mouse>
+    <default />
+    <context name="Root">
+      <mousebind button="Left" action="Press">
+        <action name="Unfocus" />
+      </mousebind>
+    </context>
+  </mouse>
+
+  <windowRules>
+    <windowRule identifier="floating_menu">
+      <positioning>center</positioning>
+      <maximized>no</maximized>
+      <fullscreen>no</fullscreen>
+      <layer>top</layer> <skipTaskbar>yes</skipTaskbar>
+      <skipPager>yes</skipPager>
+    </windowRule>
+
+    <windowRule identifier="*">
+      <action name="SetDecorations" decorations="none" />
+    </windowRule>
+  </windowRules>
+
+  <focus>
+    <followMouse>yes</followMouse>
+    <followMouseRequiresMovement>yes</followMouseRequiresMovement>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+
+  <libinput>
+    <device type="pointer">
+      <pointerSpeed>0.25</pointerSpeed>
+      <accelProfile>flat</accelProfile>
+      <accelSpeed>0</accelSpeed>
+    </device>
+  </libinput>
+</labwc_config>

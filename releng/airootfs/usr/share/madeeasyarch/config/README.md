@@ -1,0 +1,1 @@
+this just stores for global styles/config! easier for me to edit.

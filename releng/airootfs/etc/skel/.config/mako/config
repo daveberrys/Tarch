@@ -1,0 +1,10 @@
+anchor=bottom-right
+margin=0,0,0,20
+font=sans-serif 10
+background-color=#414141FF
+border-size=0
+progress-color=over #333333FF
+
+default-timeout=5000
+on-button-left=invoke-default-action
+on-button-right=dismiss

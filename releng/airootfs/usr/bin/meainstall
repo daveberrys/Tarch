@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+skipWait=false
+skipArchInstall=false
+[[ "$1" == "-s" ]] && skipWait=true
+[[ "$1" == "-sa" ]] && skipArchInstall=true
+
+if [[ "$skipArchInstall" == "false" ]] then
+    if [[ "$skipWait" == "true" ]]; then
+        archinstall
+    else
+        echo "|>|> [90mMade Easy [36mArch [97m- [34mThe Installer [97m<|<|"
+        echo
+        echo "Hey! Looks like you're ready to install Made Easy Arch!"
+        echo "Here's what you need to do:"
+        echo "  - When done installing, don't reboot from archinstall. Just exit the install, and meainstall will do postinstall setup."
+        echo "  - Made Easy Arch is in early beta! But the dotfiles should be just fine to use daily."
+        echo "  - If you encounter any issues, please open an issue on the GitHub repository."
+        echo
+        echo "Whenever you're ready, press enter to continue, ctrl + c to back out!"
+        read
+        echo "Starting archinstall..."
+        archinstall
+    fi
+    
+    if [[ $? -ne 0 ]]; then
+        echo "archinstall failed. Skipping post-install."
+        exit 1
+    fi
+fi
+
+# Copy configuration files
+cp -r /etc/skel/. /mnt/etc/skel/ && echo "Copied skel to /mnt/etc/skel/" || echo "Failed to copy skel"
+for userdir in /mnt/home/*/; do
+    cp -r /etc/skel/. "$userdir" && echo "Copied skel to $userdir" || echo "Failed to copy skel"
+done
+cp -r /usr/share/madeeasyarch/ /mnt/usr/share/ && echo "Copied madeeasyarch to /mnt/usr/share/" || echo "Failed to copy madeeasyarch"
+
+# Install pre-packages
+arch-chroot /mnt pacman -S --noconfirm $(< /usr/share/madeeasyarch/pre-packages/pacman.txt) && echo "Pre-packages pacman installed" || echo "Failed to install pre-packages pacman"
+arch-chroot /mnt nix profile install --impure $(< /usr/share/madeeasyarch/pre-packages/nix.txt) && echo "Pre-packages nix installed" || echo "Failed to install pre-packages nix"
+
+# Finalize
+echo "All is done! Rebooting in 5 seconds..."
+sleep 5
+reboot

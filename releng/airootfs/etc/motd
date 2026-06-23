@@ -1,11 +1,22 @@
-To install [38;2;23;147;209mArch Linux[0m follow the installation guide:
-https://wiki.archlinux.org/title/Installation_guide
+[90m __  __           _        _____                 [36m    _             _
+[90m|  \/  | __ _  __| | ___  | ____|__ _ ___ _   _  [36m   / \   _ __ ___| |__
+[90m| |\/| |/ _` |/ _` |/ _ \ |  _| / _` / __| | | | [36m  / _ \ | '__/ __| '_ \
+[90m| |  | | (_| | (_| |  __/ | |__| (_| \__ \ |_| | [36m / ___ \| | | (__| | | |
+[90m|_|  |_|\__,_|\__,_|\___| |_____\__,_|___/\__, | [36m/_/   \_\_|  \___|_| |_|
+                                          [90m|___/
 
-For Wi-Fi, authenticate to the wireless network using the [35miwctl[0m utility.
-For mobile broadband (WWAN) modems, connect with the [35mmmcli[0m utility.
-Ethernet, WLAN and WWAN interfaces using DHCP should work automatically.
+[97m--- Welcome to [90mMade Easy [36mArch[97m! ---
+A distro based on Arch Linux, pre-configured for LabWC, lightweight, and completely out of your way.
+We believe being in control is a responsibility, and a hassle. But, with pre-configured defaults, your experience will go smoother.
 
-After connecting to the internet, the installation guide can be accessed
-via the convenience script [35mInstallation_guide[0m.
+--- Available commands ---
+Try out the [90mconfiguration [97mfirst;  labwc
+Install [90mMade Easy [36mArch[97m;           meainstall
+Check out your specs;             fastfetch
 
-[41m [41m [41m [40m [44m [40m [41m [46m [45m [41m [46m [43m [41m [44m [45m [40m [44m [40m [41m [44m [41m [41m [46m [42m [41m [44m [43m [41m [45m [40m [40m [44m [40m [41m [44m [42m [41m [46m [44m [41m [46m [47m [0m
+--- Final messages ---
+Have fun! If you have found any bugs, feel free to create a issue request in github!
+- [36mhttps://github.com/daveberrys/MadeEasyArch
+
+[97mdotfiles are available at [36mhttps://github.com/Daveberry-Stuff/daves-labwc-config [90m(may be out of date. oops!)
+[97mand also at `~/.config` or `/root/` if you're in a liveboot.

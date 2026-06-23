@@ -1,0 +1,88 @@
+{
+  "position": "bottom",
+  "layer": "bottom",
+  "modules-left": [
+    "ext/workspaces",
+    "wlr/taskbar"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/music",
+    "custom/cava"
+  ],
+  "modules-right": [
+    "battery",
+    "bluetooth",
+    "network",
+    "tray"
+  ],
+  
+  "ext/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "on-click": "activate"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 14,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+
+  "clock": {
+    "format": "{:%d %b - %a - %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{:%A}</small></tt>",
+    "interval": 60
+  },
+  "custom/music": {
+    "exec": "/usr/share/madeeasyarch/waybar/music.sh",
+    "format": "{}",
+    "on-click": "playerctl play-pause",
+    "on-click-middle": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +10%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -10%"
+  },
+  "custom/cava": {
+    "exec": "/usr/share/madeeasyarch/waybar/cava.sh",
+    "format": "{}"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "on-click": "kitty -e bluetoothctl",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
+  "network": {
+    "format-wifi": "Connected ({signalStrength}%) ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click-right": "kitty -e nmtui"
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 5
+  }
+}

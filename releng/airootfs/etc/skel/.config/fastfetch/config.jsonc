@@ -1,0 +1,111 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "/usr/share/madeeasyarch/ascii",
+    "color": {
+      "1": "#808080"
+    }
+  },
+
+  "modules": [
+    "break",
+    "break",
+    {
+      "type": "custom",
+      "format": "                    __  __ _____    _    ",
+      "outputColor": "#808080"
+    },
+    {
+      "type": "custom",
+      "format": "                   |  \\/  | ____|  / \\   ",
+      "outputColor": "#808080"
+    },
+    {
+      "type": "custom",
+      "format": "                   | |\\/| |  _|   / _ \\  ",
+      "outputColor": "#808080"
+    },
+    {
+      "type": "custom",
+      "format": "                   | |  | | |___ / ___ \\ ",
+      "outputColor": "#808080"
+    },
+    {
+      "type": "custom",
+      "format": "                   |_|  |_|_____/_/   \\_\\",
+      "outputColor": "#808080"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "──────────────────────────────────────────────────────────────",
+      "outputColor": "#808080"
+    },
+    {
+      "type": "title",
+      "key": "This PC {icon} ",
+      "format": "{user-name} • {host-name}",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "os",
+      "key": "│ └> {icon} Operating System",
+      "format": "Made Easy Arch • Arch Linux Based",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "uptime",
+      "key": "│ └> {icon} Up Time",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "display",
+      "key": "│ └> {icon} Display",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "cpu",
+      "key": "│ └> {icon} CPU",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "gpu",
+      "key": "│ └> {icon} GPU",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "memory",
+      "key": "│ └> {icon} Memory",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "swap",
+      "key": "│ └> {icon} Swap",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "disk",
+      "key": "│ └> {icon} Disk",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "localip",
+      "key": "│ └> {icon} Local-IP",
+      "keyColor": "#808080"
+    },
+    {
+      "type": "custom",
+      "format": "──────────────────────────────────────────────────────────────",
+      "outputColor": "#808080"
+    },
+    {
+      "type": "custom",
+      "format": "         FastFetch By https://daveberry.netlify.app/"
+    },
+    {
+      "type": "custom",
+      "format": "──────────────────────────────────────────────────────────────",
+      "outputColor": "#808080"
+    }
+  ]
+}
