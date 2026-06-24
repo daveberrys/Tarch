@@ -43,7 +43,13 @@ Look, it might not be for you. So here's the reason why you don't want to use it
 - You like your current system better.
 
 # Installation
-We don't have a github actions or release yet. But we do plan one! If you decide to use this distro, here are the steps to compile from scratch;
+You have two ways to install it. From scratch, or nightly builds. Stable releases are coming soon! Just you wait...
+
+## Nightly Builds
+- The iso can be found right here! [nightly.link](https://nightly.link/daveberrys/Tarch/workflows/build/main/Tarch%20ISO.zip)
+- Download it, unzip it, flash it, and boot from it. Either from your computer or a virtual machine.
+
+## From Scratch
 - **Step 1**:
   - Use Arch Linux.
     - Yes I'm not kidding. You will need Arch Linux for this.
