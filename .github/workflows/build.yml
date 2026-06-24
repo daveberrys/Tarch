@@ -1,0 +1,36 @@
+name: Build Custom Arch ISO
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+      options: --privileged
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Arch Build Dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm archiso git devtools
+
+      - name: Build the ISO
+        run: |
+          bash ./build.sh
+
+      - name: Upload ISO Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Tarch ISO
+          path: ./out/*.iso
+          if-no-files-found: error
+          retention-days: 7
