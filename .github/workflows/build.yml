@@ -1,4 +1,4 @@
-name: Build Custom Arch ISO
+name: Build Tarch ISO
 
 on:
   push:
