@@ -59,9 +59,9 @@ arch-chroot /mnt systemctl enable NetworkManager && tarchecho success "NetworkMa
 arch-chroot /mnt systemctl enable bluetooth && tarchecho success "bluetooth enabled" || tarchecho failure "Failed to enable bluetooth"
 arch-chroot /mnt systemctl enable nix-daemon.service && tarchecho success "nix-daemon.service enabled" || tarchecho failure "Failed to enable nix-daemon.service"
 
-arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/nix.txt) && tarchecho success "Pre-packages nix installed" || tarchecho failure "Failed to install pre-packages nix"
 mkdir -p /mnt/etc/nix && tarchecho success "Nix config directory created" || tarchecho failure "Failed to create Nix config directory"
 echo "experimental-features = nix-command flakes" >> /mnt/etc/nix/nix.conf && tarchecho success "Nix config updated" || tarchecho failure "Failed to update Nix config"
+arch-chroot /mnt nix profile install --impure $(< /usr/share/tarch/pre-packages/nix.txt) && tarchecho success "Pre-packages nix installed" || tarchecho failure "Failed to install pre-packages nix"
 
 arch-chroot /mnt chsh -s /usr/bin/zsh && tarchecho success "Shell changed to zsh" || tarchecho failure "Failed to change shell"
 for userdir in /mnt/home/*/; do
@@ -71,6 +71,17 @@ for userdir in /mnt/home/*/; do
     alias nixps="nix search"
     alias nixpu="nix profile upgrade"' >> "$userdir/.zshrc" && tarchecho success "Zsh config updated" || tarchecho failure "Failed to update Zsh config"
 done
+
+arch-chroot /mnt sudo systemctl enable greetd && tarchecho success "greetd enabled" || tarchecho failure "Failed to enable greetd"
+mkdir -p /mnt/etc/greetd && tarchecho success "greetd config directory created" || tarchecho failure "Failed to create greetd config directory"
+echo '[terminal]
+vt = 1
+
+[default_session]
+command = "cage -s -- /usr/bin/gtkgreet"
+user = "greeter"' >> /mnt/etc/greetd/config.toml && tarchecho success "greetd config created" || tarchecho failure "Failed to create greetd config"
+arch-chroot /mnt sudo useradd -m greeter && tarchecho success "greeter user created" || tarchecho failure "Failed to create greeter user"
+arch-chroot /mnt sudo usermod -aG video greeter && tarchecho success "greeter user added to video group" || tarchecho failure "Failed to add greeter user to video group"
 
 # Finalize
 echo && figlet "Finalize" || echo "== Finalize =="
