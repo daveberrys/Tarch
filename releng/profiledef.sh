@@ -25,5 +25,5 @@ file_permissions=(
   ["/usr/bin/tarchinstall"]="0:0:755"
 )
 
-nix profile install --impure nixpkgs#obs-cmd
-nix profile install github:oxcl/nix-flake-helium-browser
+nix profile install --impure --extra-experimental-features nix-command nixpkgs#obs-cmd
+nix profile install --impure --extra-experimental-features nix-command github:oxcl/nix-flake-helium-browser
