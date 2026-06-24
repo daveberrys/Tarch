@@ -68,19 +68,19 @@ You boot into it! In the live environment, you have 3 commands;
 - `fastfetch` - shows system information
 
 ## What to do after installing Tarch in my system?
-Assuming you only did the following;
+### Assuming you only did the following;
 - Disk Configuration
 - Authentication
 - Network configuration
 - Exiting from Archinstall instead of rebooting
 > (which is the **reccomended** path since this already has a config file and also a desktop environment installed)
 
-Here's what you need to do **after installing** Tarch;
-- To get into the desktop environment, run `labwc`
-> [!NOTE]
-> Q: Why do we have to run a command instead of just booting into the desktop environment?
->
-> A: For starters, I'm stupid and I don't know how to make it where when you're signed in, you get automatically get booted into labwc. I'll find a way, maybe later or sooner. If you wish to help, feel free to make a issue on what package I should use or submitting a PR.
+### Here's what you need to do *after installing* Tarch;
+- Log in with your username
+- Set the command to run on login (or something similar below the username input), type `labwc`.
+- Click on the blue button, input your password.
+- Click on the blue button, and you should be in Tarch
+> We have a dedicated login screen now! Thanks to `greetd`, `greetd-gtkgreet`, and `cage`, we were able to create the login screen.
 
 # Keybinds & Other Stuff.
 **Here are all the keybinds**;
