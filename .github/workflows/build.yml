@@ -25,7 +25,7 @@ jobs:
 
       - name: Build the ISO
         run: |
-          bash ./build.sh
+          bash ./rebuild.sh
 
       - name: Upload ISO Artifact
         uses: actions/upload-artifact@v4
