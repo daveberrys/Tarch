@@ -21,7 +21,7 @@ jobs:
       - name: Install Arch Build Dependencies
         run: |
           pacman -Syu --noconfirm
-          pacman -S --noconfirm archiso git devtools
+          pacman -S --noconfirm nix archiso git devtools
 
       - name: Build the ISO
         run: |
